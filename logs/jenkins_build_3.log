@@ -1,0 +1,223 @@
+Started by user Pranil Pawar
+Obtained Jenkinsfile from git https://github.com/PranilPawar7/ai-devops-optimizer.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/PranilPawar7/ai-devops-optimizer.git # timeout=10
+Fetching upstream changes from https://github.com/PranilPawar7/ai-devops-optimizer.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.55.0.windows.5'
+ > git.exe fetch --tags --force --progress -- https://github.com/PranilPawar7/ai-devops-optimizer.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision b5d2245529a37d81d92c33b61d9f8f206b80fb4e (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f b5d2245529a37d81d92c33b61d9f8f206b80fb4e # timeout=10
+Commit message: "Fix Jenkins pipeline environment path"
+ > git.exe rev-list --no-walk 1ec79f8cc0930e724ff82687c5091b4e14e6fa05 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git.exe rev-parse --resolve-git-dir C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer\.git # timeout=10
+Fetching changes from the remote Git repository
+ > git.exe config remote.origin.url https://github.com/PranilPawar7/ai-devops-optimizer.git # timeout=10
+Fetching upstream changes from https://github.com/PranilPawar7/ai-devops-optimizer.git
+ > git.exe --version # timeout=10
+ > git --version # 'git version 2.55.0.windows.5'
+ > git.exe fetch --tags --force --progress -- https://github.com/PranilPawar7/ai-devops-optimizer.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git.exe rev-parse "refs/remotes/origin/main^{commit}" # timeout=10
+Checking out Revision b5d2245529a37d81d92c33b61d9f8f206b80fb4e (refs/remotes/origin/main)
+ > git.exe config core.sparsecheckout # timeout=10
+ > git.exe checkout -f b5d2245529a37d81d92c33b61d9f8f206b80fb4e # timeout=10
+Commit message: "Fix Jenkins pipeline environment path"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies)
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer>python -m pip install -r requirements.txt 
+Collecting Flask==3.1.2 (from -r requirements.txt (line 1))
+  Downloading flask-3.1.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pytest==8.4.2 (from -r requirements.txt (line 2))
+  Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+Collecting blinker>=1.9.0 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting click>=8.1.3 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting itsdangerous>=2.2.0 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting jinja2>=3.1.2 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting markupsafe>=2.1.1 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading markupsafe-3.0.4-cp312-cp312-win_amd64.whl.metadata (2.8 kB)
+Collecting werkzeug>=3.1.0 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+Requirement already satisfied: colorama>=0.4 in c:\users\admin\appdata\local\programs\python\python312\lib\site-packages (from pytest==8.4.2->-r requirements.txt (line 2)) (0.4.6)
+Collecting iniconfig>=1 (from pytest==8.4.2->-r requirements.txt (line 2))
+  Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging>=20 (from pytest==8.4.2->-r requirements.txt (line 2))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==8.4.2->-r requirements.txt (line 2))
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Requirement already satisfied: pygments>=2.7.2 in c:\users\admin\appdata\local\programs\python\python312\lib\site-packages (from pytest==8.4.2->-r requirements.txt (line 2)) (2.21.0)
+Downloading flask-3.1.2-py3-none-any.whl (103 kB)
+Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.4-cp312-cp312-win_amd64.whl (14 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+Installing collected packages: pluggy, packaging, markupsafe, itsdangerous, iniconfig, click, blinker, werkzeug, pytest, jinja2, Flask
+  WARNING: The scripts py.test.exe and pytest.exe are installed in 'C:\Users\Admin\AppData\Local\Programs\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script flask.exe is installed in 'C:\Users\Admin\AppData\Local\Programs\Python\Python312\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed Flask-3.1.2 blinker-1.9.0 click-8.5.0 iniconfig-2.3.0 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.4 packaging-26.3 pluggy-1.6.0 pytest-8.4.2 werkzeug-3.1.9
+
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run Tests)
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer>python -m pytest -v 
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-8.4.2, pluggy-1.6.0 -- C:\Users\Admin\AppData\Local\Programs\Python\Python312\python.exe
+cachedir: .pytest_cache
+rootdir: C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer
+collecting ... collected 3 items
+
+tests/test_app.py::test_home PASSED                                      [ 33%]
+tests/test_app.py::test_health PASSED                                    [ 66%]
+tests/test_app.py::test_info PASSED                                      [100%]
+
+============================== 3 passed in 0.14s ==============================
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Docker Image)
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer>docker build -t ai-devops-app . 
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  12.29kB
+
+Step 1/7 : FROM python:3.12-slim
+3.12-slim: Pulling from library/python
+Digest: sha256:02108f5d322dd89f1c9e552442c25acb0543dfdbc455693a5599624f20d9155d
+Status: Downloaded newer image for python:3.12-slim
+ ---> 02108f5d322d
+Step 2/7 : WORKDIR /app
+ ---> Running in 07a60864807d
+ ---> Removed intermediate container 07a60864807d
+ ---> 2e128fde2061
+Step 3/7 : COPY requirements.txt .
+ ---> b30ce5b50e1f
+Step 4/7 : RUN pip install --no-cache-dir -r requirements.txt
+ ---> Running in 4d55d03f5329
+Collecting Flask==3.1.2 (from -r requirements.txt (line 1))
+  Downloading flask-3.1.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting pytest==8.4.2 (from -r requirements.txt (line 2))
+  Downloading pytest-8.4.2-py3-none-any.whl.metadata (7.7 kB)
+Collecting blinker>=1.9.0 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting click>=8.1.3 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting itsdangerous>=2.2.0 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+Collecting jinja2>=3.1.2 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting markupsafe>=2.1.1 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting werkzeug>=3.1.0 (from Flask==3.1.2->-r requirements.txt (line 1))
+  Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+Collecting iniconfig>=1 (from pytest==8.4.2->-r requirements.txt (line 2))
+  Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging>=20 (from pytest==8.4.2->-r requirements.txt (line 2))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==8.4.2->-r requirements.txt (line 2))
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest==8.4.2->-r requirements.txt (line 2))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Downloading flask-3.1.2-py3-none-any.whl (103 kB)
+Downloading pytest-8.4.2-py3-none-any.whl (365 kB)
+Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 7.3 MB/s eta 0:00:00
+Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+Installing collected packages: pygments, pluggy, packaging, markupsafe, itsdangerous, iniconfig, click, blinker, werkzeug, pytest, jinja2, Flask
+Successfully installed Flask-3.1.2 blinker-1.9.0 click-8.5.0 iniconfig-2.3.0 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.4 packaging-26.3 pluggy-1.6.0 pygments-2.21.0 pytest-8.4.2 werkzeug-3.1.9
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[0m[91m
+[notice] A new release of pip is available: 25.0.1 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+[0m ---> Removed intermediate container 4d55d03f5329
+ ---> a138be1d35f7
+Step 5/7 : COPY app ./app
+ ---> 9d008ff65cd0
+Step 6/7 : EXPOSE 5000
+ ---> Running in 04b8469abd6f
+ ---> Removed intermediate container 04b8469abd6f
+ ---> dacd3f7f885a
+Step 7/7 : CMD ["python", "app/app.py"]
+ ---> Running in bf1dcbca7e7e
+ ---> Removed intermediate container bf1dcbca7e7e
+ ---> 77efd9a716eb
+Successfully built 77efd9a716eb
+Successfully tagged ai-devops-app:latest
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy Container)
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer>docker rm -f ai-devops-container   || exit /b 0 
+ai-devops-container
+[Pipeline] bat
+
+C:\ProgramData\Jenkins\.jenkins\workspace\AI-DevOps-Optimizer>docker run -d -p 5000:5000 --name ai-devops-container ai-devops-app 
+ea93cb0e0e1bd493dc78b4941403cb74659c31195aae181d85d3cef9a2fd6e3c
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
