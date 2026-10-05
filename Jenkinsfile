@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker buildx build --load -t ai-devops-app .'
+                bat 'docker build -t ai-devops-app .'
             }
         }
 
@@ -33,4 +33,5 @@ pipeline {
         }
     }
 }
+
 
