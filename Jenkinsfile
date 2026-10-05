@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PATH+PYTHON = 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312'
-        PATH+DOCKER = 'C:\\Users\\Admin\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin'
+        PATH = "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python312;C:\\Users\\Admin\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;${env.PATH}"
     }
 
     stages {
