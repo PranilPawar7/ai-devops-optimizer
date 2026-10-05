@@ -1,5 +1,6 @@
 ﻿import os
 import re
+import json
 from google import genai
 
 
@@ -111,7 +112,7 @@ Explain the expected operational benefit without inventing numerical results.
 
         return response.text
 
-    except Exception as error:
+    except Exception:
 
         print("\n[WARNING] Gemini AI service is temporarily unavailable.")
         print("[WARNING] Continuing with rule-based DevOps analysis.\n")
@@ -126,7 +127,63 @@ Explain the expected operational benefit without inventing numerical results.
         )
 
 
-def print_report(findings, ai_analysis):
+def load_pipeline_metrics(metrics_file):
+
+    if not os.path.exists(metrics_file):
+        print(f"ERROR: Metrics file not found: {metrics_file}")
+        raise SystemExit(1)
+
+    try:
+
+        with open(metrics_file, "r", encoding="utf-8-sig") as file:
+            metrics = json.load(file)
+
+    except json.JSONDecodeError as error:
+
+        print(f"ERROR: Invalid JSON in metrics file: {error}")
+        raise SystemExit(1)
+
+    required_fields = [
+        "baseline_build",
+        "baseline_time_seconds",
+        "optimized_build",
+        "optimized_time_seconds",
+        "optimization"
+    ]
+
+    for field in required_fields:
+
+        if field not in metrics:
+            print(f"ERROR: Missing field in metrics file: {field}")
+            raise SystemExit(1)
+
+    return metrics
+
+
+def compare_pipeline_performance(metrics):
+
+    baseline_time = float(metrics["baseline_time_seconds"])
+    optimized_time = float(metrics["optimized_time_seconds"])
+
+    time_saved = baseline_time - optimized_time
+
+    if baseline_time > 0:
+        improvement = (time_saved / baseline_time) * 100
+    else:
+        improvement = 0
+
+    return {
+        "baseline_build": metrics["baseline_build"],
+        "optimized_build": metrics["optimized_build"],
+        "baseline_time": baseline_time,
+        "optimized_time": optimized_time,
+        "time_saved": time_saved,
+        "improvement": improvement,
+        "optimization": metrics["optimization"]
+    }
+
+
+def print_report(findings, ai_analysis, performance):
 
     print("\n" + "=" * 70)
     print("AI-ASSISTED DEVOPS PIPELINE ANALYSIS")
@@ -136,6 +193,7 @@ def print_report(findings, ai_analysis):
     print("-------------------")
 
     for index, finding in enumerate(findings, start=1):
+
         print(f"\nFinding {index}")
         print(f"Type           : {finding['type']}")
         print(f"Severity       : {finding['severity']}")
@@ -148,13 +206,34 @@ def print_report(findings, ai_analysis):
     print(ai_analysis)
 
     print("\n" + "=" * 70)
+    print("PIPELINE PERFORMANCE COMPARISON")
+    print("=" * 70)
+
+    print(f"Baseline Build #{performance['baseline_build']} Time  : "
+          f"{performance['baseline_time']} seconds")
+
+    print(f"Optimized Build #{performance['optimized_build']} Time : "
+          f"{performance['optimized_time']} seconds")
+
+    print(f"Time Saved                         : "
+          f"{performance['time_saved']:.1f} seconds")
+
+    print(f"Performance Improvement            : "
+          f"{performance['improvement']:.1f}%")
+
+    print(f"Optimization Applied               : "
+          f"{performance['optimization']}")
+
+    print("=" * 70)
 
 
 if __name__ == "__main__":
 
     log_file = "logs/jenkins_build_3.log"
+    metrics_file = "reports/pipeline_metrics.json"
 
     if not os.path.exists(log_file):
+
         print(f"ERROR: Jenkins log not found: {log_file}")
         raise SystemExit(1)
 
@@ -168,7 +247,16 @@ if __name__ == "__main__":
         findings
     )
 
+    metrics = load_pipeline_metrics(
+        metrics_file
+    )
+
+    performance = compare_pipeline_performance(
+        metrics
+    )
+
     print_report(
         findings,
-        ai_analysis
+        ai_analysis,
+        performance
     )

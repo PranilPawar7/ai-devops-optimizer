@@ -1,0 +1,7 @@
+﻿{
+    "baseline_build": 3,
+    "baseline_time_seconds": 21.0,
+    "optimized_build": 5,
+    "optimized_time_seconds": 7.2,
+    "optimization": "Removed duplicate Jenkins SCM checkout"
+}
